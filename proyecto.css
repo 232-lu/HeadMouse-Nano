@@ -49,28 +49,22 @@ nav ul li a {
     font-weight: 700;
     font-size: 1.2rem;
     padding: 12px;
-    transition: color 0.4s ease, border-bottom 0.4s ease;
     position: relative;
 }
 
 nav ul li a::after {
     content: '';
-    width: 0%;
+    width: 100%; /* Subrayado completo, estático */
     height: 3px;
     background-color: #64ffda;
-    display: block;
+    display: none;
     position: absolute;
     bottom: 0;
     left: 0;
-    transition: width 0.4s ease;
 }
 
-nav ul li a:hover::after {
-    width: 100%;
-}
-
-nav ul li a:hover {
-    color: #64ffda;
+nav ul li a.active::after {
+    display: block; /* Mostrar subrayado solo en el enlace activo */
 }
 
 /* Secciones */
@@ -120,21 +114,17 @@ ul li {
 .imagenes {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Evitar que se envuelvan en múltiples filas */
 }
 
 .imagenes figure {
-    margin: 20px;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.imagenes figure:hover {
-    transform: scale(1.08);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    flex: 1; /* Asegura que cada figura ocupe el mismo ancho */
+    margin: 10px; /* Ajusta el margen si es necesario */
 }
 
 .imagenes img {
     max-width: 100%;
+    height: auto; /* Asegura que mantenga la proporción */
     border-radius: 12px;
 }
 
@@ -216,7 +206,6 @@ footer p:first-of-type {
 footer p:nth-of-type(2) {
     color: #ffffff; /* Contacto en blanco */
 }
-
 
 /* Responsividad */
 @media (max-width: 768px) {
